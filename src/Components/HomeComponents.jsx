@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getMovieList, searchMovie, getDetailMovie } from "../api";
+import { getMovieList, searchMovie } from "../api";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -96,6 +96,9 @@ const HomeComponents = () => {
       </nav>
       <main className="main">
         <PopularMovieList />
+        <footer className="footer">
+          <p>© 2024 MovieList Mania. All rights reserved.</p>
+        </footer>
       </main>
     </>
   );

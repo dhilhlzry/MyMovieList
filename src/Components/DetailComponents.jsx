@@ -1,14 +1,66 @@
-import { Await, useNavigate, useParams } from "react-router-dom";
-import { getDetailMovie } from "../api";
+import { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate, useParams } from "react-router-dom";
 import YouTubeVideo from "./VideoComponents";
 
 const DetailComponents = () => {
+  const [movie, setDetailMovie] = useState([]);
+  const [video, setDetailVideo] = useState([]);
+  const [selectedItem, setSelectedItem] = useState(null);
+
   const navigate = useNavigate();
   const { id } = useParams();
-  const videoId = "QczGoCmX-pI"; // Ganti dengan ID video yang Anda inginkan
+  const selectedIndex = "Trailer"; // ID yang ingin dipilih
 
-  console.log({ getDetailMovie });
+  useEffect(() => {
+    const fetchMovie = async () => {
+      try {
+        const response = await axios.get(
+          "https://api.themoviedb.org/3/movie/" +
+            id +
+            "?language=en-US?page=1&api_key=536e17af8fc37caa6e658a2a49e6370a"
+        );
+        console.log(response.data);
+        setDetailMovie(response.data);
+      } catch (error) {
+        setError(error);
+      }
+    };
+
+    fetchMovie();
+  }, []);
+
+  useEffect(() => {
+    const fetchVideo = async () => {
+      try {
+        const response = await axios.get(
+          "https://api.themoviedb.org/3/movie/" +
+            id +
+            "/videos?language=en-US?page=1&api_key=536e17af8fc37caa6e658a2a49e6370a"
+        );
+        console.log(response.data);
+        setDetailVideo(response.data);
+
+        const selectedItem = response.data.results.find(
+          (item) => item.type === selectedIndex
+        );
+        setSelectedItem(selectedItem);
+        // console.log({ selectedItem });
+      } catch (error) {
+        setError(error);
+      }
+    };
+
+    fetchVideo();
+  }, []);
+
+  const videoId = `${selectedItem?.key}`; // Ganti dengan ID video yang Anda inginkan
+
+  // const GenreList = () => {
+  //   return movie.genres.map((genre, i) => {
+  //     return <li key={i}>{genre.name}</li>;
+  //   });
+  // };
 
   return (
     <>
@@ -28,29 +80,29 @@ const DetailComponents = () => {
         <div className="box-detail">
           <button className="btn-toggle">🤍</button>
           <button className="btn-exit" onClick={() => navigate("/")}>
-            ✖️
+            ❌
           </button>
           <div className="details">
             <header>
               <img
                 className="image-detail"
-                src="https://cdn.myanimelist.net/images/anime/13/17405.jpg"
+                src={`${import.meta.env.VITE_REACT_APP_BASEIMGURL}/${
+                  movie.poster_path
+                }`}
                 alt=""
               />
               <div className="details-overview">
-                <h2>Naruto</h2>
+                <h2>{movie.original_title}</h2>
                 {/* <p>Id : {id}</p> */}
-                <p>2022-05-09 &bull; 8.71</p>
+                <p>
+                  {" "}
+                  {movie.release_date} &bull; {movie.vote_average}
+                </p>
+                {/* <GenreList/> */}
                 <p>Action &bull; Comedy &bull; Adventure</p>
                 <p className="synopsis-detail">
-                  <em>
-                    Moments prior to Naruto Uzumaki's birth, a huge demon known
-                    as the Kyuubi, the Nine-Tailed Fox, attacked Konohagakure,
-                    the Hidden Leaf Village, and wreaked havoc. In order to put
-                    an end to the Kyuubi's rampage, the leader of the village,
-                    the Fourth Hokage, sacrificed his life and sealed the
-                    monstrous beast inside the newborn Naruto.
-                  </em>
+                  <em>{movie.overview}</em>
+                  {/* <em>{selectedItem.key}</em> */}
                 </p>
               </div>
             </header>
@@ -59,6 +111,9 @@ const DetailComponents = () => {
             </section>
           </div>
         </div>
+        <footer className="footer">
+          <p>© 2024 MovieList Mania. All rights reserved.</p>
+        </footer>
       </main>
     </>
   );

@@ -51,7 +51,7 @@ body {
 
 .nav-bar {
   margin: auto;
-  max-width: 94rem;
+  max-width: 76rem;
   padding: 1rem 3.2rem;
 }
 
@@ -61,15 +61,15 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
+  padding: 1.6rem;
 }
 
 .nav-bar .logo span {
-  font-size: 3.2rem;
+  font-size: 2.3rem;
 }
 
 .nav-bar .logo h1 {
-  font-size: 2.6rem;
+  font-size: 2.1rem;
   font-weight: 600;
   color: #fff;
 }
@@ -86,10 +86,10 @@ body {
   justify-self: center;
   border: none;
   margin-bottom: 1.5rem;
-  padding: 1.1rem 1.6rem;
-  font-size: 1.6rem;
+  padding: 0.9rem 1.6rem;
+  font-size: 1.2rem;
   border-radius: 0.5rem;
-  width: 40rem;
+  width: 34rem;
   transition: all 0.3s;
   color: var(--color-text);
   background-color: var(--color-primary);
@@ -98,7 +98,7 @@ body {
 .nav-bar .search::placeholder {
   color: var(--color-text);
   filter: brightness(80%);
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   letter-spacing: 1.2px;
 }
 
@@ -109,7 +109,7 @@ body {
 }
 
 .nav-bar .search-results {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 
 /* Main */
@@ -121,7 +121,7 @@ body {
   justify-content: center;
   align-items: center;
   gap: 2.4rem;
-  margin-bottom: 220rem;
+  margin-bottom: 344rem;
 }
 
 .main-detail {
@@ -132,11 +132,11 @@ body {
   justify-content: center;
   align-items: center;
   gap: 2.4rem;
-  margin-bottom: auto;
+  margin-bottom: 48rem;
 }
 
 .main .box {
-  width: 39rem;
+  width: 30rem;
   height: 52rem;
   min-height: 6rem;
   background-color: var(--color-background-100);
@@ -161,8 +161,8 @@ body {
   position: absolute;
   top: 0.8rem;
   right: 0.8rem;
-  width: 2.8rem;
-  height: 2.8rem;
+  width: 2.3rem;
+  height: 2.3rem;
   border-radius: 50%;
   border: none;
   background-color: var(--color-background-900);
@@ -212,7 +212,7 @@ body {
 
 .details {
   line-height: 1.4;
-  font-size: 1.4rem;
+  font-size: 1.1rem;
 }
 
 .details header {
@@ -229,7 +229,7 @@ body {
 .details img {
   margin-top: 15px;
   margin-left: 30px;
-  width: 40%;
+  width: 36%;
   border-radius: 1rem;
 }
 
@@ -246,11 +246,11 @@ body {
   background-color: var(--color-background-100);
   display: flex;
   flex-direction: column;
-  gap: 1.4rem;
+  gap: 1rem;
 }
 
 .details-overview h2 {
-  font-size: 2rem;
+  font-size: 1.6rem;
   line-height: 1.1;
   max-width: 100px;
 }
@@ -293,18 +293,11 @@ body {
   border: #0f4c75;
 }
 
-/* .synopsis {
+.synopsis {
  
-} */
-
-.footer {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  font-size: 1.4rem;
-  color: var(--color-text);
-  padding-bottom: 2rem;
 }
+
+
 
 /* MEDIA QUERY */
 
